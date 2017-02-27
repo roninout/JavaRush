@@ -2,7 +2,6 @@ package com.javarush.task.task08.task0812;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /* 
 Cамая длинная последовательность
@@ -17,8 +16,6 @@ public class Solution {
 
         for (int i = 0; i < 10; i++)
             list.add(Integer.parseInt(reader.readLine()));
-
-        Collections.sort(list);
 
 
         for (int i = 0; i < list.size() - 1; i++)
