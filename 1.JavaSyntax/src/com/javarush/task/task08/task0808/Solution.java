@@ -17,6 +17,7 @@ public class Solution {
         set10000(arrayList);
         remove10000(arrayList);
 
+
         // LinkedList
         LinkedList linkedList = new LinkedList();
         insert10000(linkedList);
