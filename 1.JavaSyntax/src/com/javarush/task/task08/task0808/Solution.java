@@ -28,24 +28,24 @@ public class Solution {
     public static void insert10000(List list) {
         //напишите тут ваш код
         for (int i = 0; i < 10000; i++)
-            list.add(i);
+            list.add(i, i);
     }
 
     public static void get10000(List list) {
         //напишите тут ваш код
         for (int i = 0; i < 10000; i++)
-            list.remove(i);
+            list.get(i);
     }
 
     public static void set10000(List list) {
         //напишите тут ваш код
         for (int i = 0; i < 10000; i++)
-            list.set(i,i);
+            list.set(i,"s");
     }
 
     public static void remove10000(List list) {
         //напишите тут ваш код
-        for (int i = 0; i < 10000; i++)
-            list.get(i);
+        for (int i = list.size()-1; i >= 0; i--)
+            list.remove(i);
     }
 }
