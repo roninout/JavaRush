@@ -11,20 +11,20 @@ import java.util.Locale;
 
 public class Solution {
     public static void main(String[] args) throws ParseException {
-//        System.out.println(isDateOdd("JANUARY 2 2020"));
+        System.out.println(isDateOdd("JANUARY 1 2000"));
     }
 
     public static boolean isDateOdd(String date) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("MMM d yyyy", Locale.US);
-        Date yearStartTime = formatter.parse(date);
-        Date currentTime = new Date();
-
-        long msTimeDistance = Math.abs(currentTime.getTime() - yearStartTime.getTime());
-        long msDay = 24 * 60 * 60 * 1000;  //сколько миллисекунд в одних сутках
-
-        int dayCount = (int) (msTimeDistance/msDay + 1); //количество целых дней
-//        System.out.println("Days from start of year: " + dayCount);
-
-        return dayCount % 2 != 0;
+        Date dat_new = new Date(date);
+        Date start_year = new Date(date);
+        start_year.setHours(0);
+        start_year.setMinutes(0);
+        start_year.setSeconds(0);
+        start_year.setDate(1);
+        start_year.setMonth(0);
+        long d = dat_new.getTime() - start_year.getTime();
+        long ms = 1000*60*60*24;
+        int dayCount = (int)(d/ms);
+        return dayCount % 2 == 0;
     }
 }
