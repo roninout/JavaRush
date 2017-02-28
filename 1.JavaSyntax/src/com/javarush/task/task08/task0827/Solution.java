@@ -23,7 +23,7 @@ public class Solution {
         long msDay = 24 * 60 * 60 * 1000;  //сколько миллисекунд в одних сутках
 
         int dayCount = (int) (msTimeDistance/msDay + 1); //количество целых дней
-        System.out.println("Days from start of year: " + dayCount);
+//        System.out.println("Days from start of year: " + dayCount);
 
         return dayCount % 2 != 0;
     }
