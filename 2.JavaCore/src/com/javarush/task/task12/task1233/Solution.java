@@ -33,7 +33,6 @@ public class Solution {
         return new Pair<Integer, Integer>(min, index);
     }
 
-
     public static class Pair<X, Y> {
         public X x;
         public Y y;
