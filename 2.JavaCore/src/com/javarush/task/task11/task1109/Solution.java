@@ -26,7 +26,7 @@ public class Solution {
             return name;
         }
 
-        public int getSpeed() {
+        private int getSpeed() {
             return speed;
         }
 
@@ -48,7 +48,7 @@ public class Solution {
             return name;
         }
 
-        public int getSpeed() {
+        private int getSpeed() {
             return speed;
         }
 
