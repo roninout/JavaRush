@@ -41,7 +41,7 @@ public class Solution {
     }
 
     public static void removeItemFromMapByValue(HashMap<String, String> map, String value) {
-        HashMap<String, String> copy = new HashMap<String, String>(map);
+        HashMap<String, String> copy = new HashMap<>(map);
         for (Map.Entry<String, String> pair : copy.entrySet()) {
             if (pair.getValue().equals(value))
                 map.remove(pair.getKey());

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class Solution {
     public static void main(String[] args) {
         //напишите тут ваш код
-        Human child1 = new Human("child1", true, 3, new ArrayList<Human>());
-        Human child2 = new Human("child2", false, 5, new ArrayList<Human>());
-        Human child3 = new Human("child3", true, 8, new ArrayList<Human>());
+        Human child1 = new Human("child1", true, 3, new ArrayList<>());
+        Human child2 = new Human("child2", false, 5, new ArrayList<>());
+        Human child3 = new Human("child3", true, 8, new ArrayList<>());
 
         ArrayList<Human> children = new ArrayList<>();
         children.add(child1);
