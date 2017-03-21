@@ -17,4 +17,16 @@ public class Solution {
     }
 
     //напишите тут ваш класс
+    public class Screen implements Selectable, Updatable{
+
+        @Override
+        public void onSelect() {
+
+        }
+
+        @Override
+        public void refresh() {
+
+        }
+    }
 }
