@@ -28,8 +28,8 @@ public class Solution {
         if (n == 0) return "1";
         while(n != 1)
         {
-            n = n-1;
-            result = result.multiply(BigInteger.valueOf(n));
+           n--;
+           result = result.multiply(BigInteger.valueOf(n));
         }
         return result.toString();
     }
