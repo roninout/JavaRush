@@ -36,7 +36,7 @@ public class Solution {
         }
     }
 
-    public static class Water extends Thread implements Runnable {
+    public static class Water implements Runnable {
         private String commonResource;
 
         public Water(String commonResource) {
@@ -45,8 +45,8 @@ public class Solution {
 
         public void run() {
             //fix 2 variables - исправь 2 переменных
-            boolean isCurrentThreadInterrupted = this.isInterrupted();
-            String threadName = this.getName();
+            boolean isCurrentThreadInterrupted = Thread.currentThread().isInterrupted();
+            String threadName = Thread.currentThread().getName();
 
             try {
                 while (!isCurrentThreadInterrupted) {
