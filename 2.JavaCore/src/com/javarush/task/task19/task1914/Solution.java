@@ -24,10 +24,22 @@ public class Solution {
         System.setOut(consoleStream);
 
         String [] numb = result.split(" ");
+        result = String.format("%s %s %s %s ", numb[0], numb[1], numb[2], numb[3]);
 
-
-
-        System.out.println(result.toUpperCase());
+        switch (numb[1]) {
+            case "+":
+                result += Integer.parseInt(numb[0]) + Integer.parseInt(numb[2]);
+                break;
+            case "-":
+                result += Integer.parseInt(numb[0]) - Integer.parseInt(numb[2]);
+                break;
+            case "*":
+                result += Integer.parseInt(numb[0]) * Integer.parseInt(numb[2]);
+                break;
+            default:
+                break;
+        }
+        System.out.print(result);
     }
 
     public static class TestString {
