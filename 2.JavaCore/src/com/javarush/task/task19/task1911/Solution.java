@@ -19,11 +19,11 @@ public class Solution {
         System.setOut(printStream);
         testString.printSomething();
 
-        String result = printStream.toString();
+        String result = outputStream.toString();
 
         System.setOut(consoleStream);
 
-        //System.out.println(result.toUpperCase());
+        System.out.println(result.toUpperCase());
     }
 
     public static class TestString {
