@@ -9,9 +9,9 @@ import java.io.*;
 public class Solution {
     public static TestString testString = new TestString();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        FileOutputStream outputStream = new FileOutputStream();
+        FileOutputStream fileOutputStream = new FileOutputStream(reader.readLine());
         PrintStream consoleStream = System.out;
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -23,6 +23,11 @@ public class Solution {
         System.setOut(consoleStream);
 
         System.out.println(result);
+
+        fileOutputStream.write(result.getBytes());
+
+        reader.close();
+        fileOutputStream.close();
     }
 
     public static class TestString {
