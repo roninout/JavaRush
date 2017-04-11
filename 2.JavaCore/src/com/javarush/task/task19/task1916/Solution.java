@@ -3,7 +3,6 @@ package com.javarush.task.task19.task1916;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /* 
 Отслеживаем изменения
