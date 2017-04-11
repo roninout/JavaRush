@@ -1,4 +1,4 @@
-qwerty длинное короткое аббревиатура tyt tttttttt
-tyt uiui yuoiyou
-123456
-1234567 234567789
+<span xml:lang="en" lang="en"><b><span>Turanga Leela</span></b></span>
+<span>Turanga Leela</span>
+<span>Super</span>
+<span>girl</span>
