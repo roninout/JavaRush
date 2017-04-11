@@ -42,8 +42,8 @@ public class Solution {
                 }
             }
 
-            if (result instanceof A) {
-                A p = (C) result;
+            if (result instanceof C) {
+                C p = (C) result;
                 System.out.println(p.getClass().getSimpleName());
             }
 
