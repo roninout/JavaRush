@@ -9,59 +9,62 @@ import java.io.FileDescriptor;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileConsoleWriter extends FileWriter {
+public class FileConsoleWriter {
     private FileWriter fileWriter;
 
     public FileConsoleWriter(String fileName) throws IOException {
-        super(fileName);
+        this.fileWriter = new FileWriter(fileName);
     }
 
     public FileConsoleWriter(String fileName, boolean append) throws IOException {
-        super(fileName, append);
+        this.fileWriter = new FileWriter(fileName, append);
     }
 
     public FileConsoleWriter(File file) throws IOException {
-        super(file);
+        this.fileWriter = new FileWriter(file);
     }
 
     public FileConsoleWriter(File file, boolean append) throws IOException {
-        super(file, append);
+        this.fileWriter = new FileWriter(file, append);
     }
 
     public FileConsoleWriter(FileDescriptor fd) {
-        super(fd);
+        this.fileWriter = new FileWriter(fd);
     }
 
 
 
-    @Override
     public void write(char[] cbuf, int off, int len) throws IOException {
         fileWriter.write(cbuf, off, len);
 
+        System.out.println(String.copyValueOf(cbuf).substring(off, off + len));
+
     }
 
-    @Override
     public void write(int c) throws IOException {
-        super.write(c);
+        fileWriter.write(c);
         System.out.println(c);
     }
 
-    @Override
     public void write(String str) throws IOException {
         fileWriter.write(str);
+        System.out.println(str);
     }
 
-    @Override
     public void write(String str, int off, int len) throws IOException {
         fileWriter.write(str, off, len);
+        System.out.println(str.substring(off, off + len));
     }
 
-    @Override
     public void write(char[] cbuf) throws IOException {
         fileWriter.write(cbuf);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (char c: cbuf)
+            stringBuilder.append(c);
+        System.out.println(stringBuilder);
     }
 
-    @Override
     public void close() throws IOException {
         fileWriter.close();
     }
