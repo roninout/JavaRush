@@ -16,9 +16,7 @@ public class Solution {
         while (fileReader.ready()){
             String [] word = fileReader.readLine().split(" ");
             for (String anWord : word) {
-                Pattern p = Pattern.compile("\\d+\\w+");
-                Matcher m = p.matcher(anWord);
-                if (m.matches())
+                if (!anWord.matches("^\\D*$"))
                     fileWriter.write(anWord + " ");
             }
         }
