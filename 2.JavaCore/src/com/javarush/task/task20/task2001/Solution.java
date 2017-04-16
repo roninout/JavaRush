@@ -13,7 +13,7 @@ public class Solution {
         //исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
 
-            File your_file_name = File.createTempFile("your_file_name", null);
+            File your_file_name = File.createTempFile("1.txt", null);
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -24,6 +24,7 @@ public class Solution {
             Human somePerson = new Human();
             somePerson.load(inputStream);
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
+            System.out.println(ivanov.equals(somePerson));
             inputStream.close();
 
         } catch (IOException e) {
@@ -71,10 +72,33 @@ public class Solution {
 
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            PrintWriter printWriter = new PrintWriter(outputStream);
+
+            String YesOrNot = name != null ? "yes" : "no"; // проверяем на существование имени
+            printWriter.println(YesOrNot); // результат записываем в файл
+
+            if ("yes".equals(YesOrNot)) {
+                printWriter.println(name);
+                for (Asset as : assets) {
+                    printWriter.println(as.getName());
+                }
+            }
+            printWriter.close();
         }
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String YesOrNot = reader.readLine();
+
+            if (YesOrNot.equals("yes"))
+            {
+                name = reader.readLine();
+                while (reader.ready())
+                    assets.add(new Asset(reader.readLine()));
+            }
+
+            reader.close();
         }
     }
 }
