@@ -12,8 +12,8 @@ public class Solution {
         try {
 
             File your_file_name = File.createTempFile("your_file_name", null);
-            OutputStream outputStream = new FileOutputStream(your_file_name);
-            InputStream inputStream = new FileInputStream(your_file_name);
+            OutputStream outputStream = new FileOutputStream("1.txt");
+            InputStream inputStream = new FileInputStream("1.txt");
 
             ClassWithStatic classWithStatic = new ClassWithStatic();
             classWithStatic.i = 3;
@@ -28,6 +28,12 @@ public class Solution {
 
             loadedObject.load(inputStream);
             //check here that classWithStatic object equals to loadedObject object - проверьте тут, что classWithStatic и loadedObject равны
+            System.out.println(loadedObject.equals(classWithStatic));
+
+            System.out.println(loadedObject.staticString);
+            System.out.println(loadedObject.i);
+            System.out.println(loadedObject.j);
+
 
             outputStream.close();
             inputStream.close();
@@ -48,10 +54,30 @@ public class Solution {
 
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            PrintWriter printWriter = new PrintWriter(outputStream);
+            printWriter.println(staticString);
+            printWriter.println(i);
+            printWriter.println(j);
+
+            //printWriter.flush();
+            printWriter.close();
         }
 
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            try {
+                String stat = reader.readLine();
+                if (stat != null) staticString = stat;
+
+                String sI = reader.readLine();
+                if (sI != null) i = Integer.parseInt(sI);
+
+                String sJ = reader.readLine();
+                if (sJ != null) j = Integer.parseInt(sJ);
+            }
+            catch (Exception e){e.printStackTrace();}
+            reader.close();
         }
 
         @Override
