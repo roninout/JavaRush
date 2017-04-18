@@ -1,2 +1,3 @@
-com.app.ip=127.0.0.1
-com.app.port=8080
+Ivanov
+home
+car
