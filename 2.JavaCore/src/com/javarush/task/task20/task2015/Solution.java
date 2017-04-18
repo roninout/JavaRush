@@ -5,6 +5,9 @@ import java.io.*;
 /* 
 Переопределение сериализации
 */
+
+// читай тут - http://ccfit.nsu.ru/~deviv/courses/oop/java_ser_rus.html
+
 public class Solution implements Serializable, Runnable{
     private transient Thread runner;
     private int speed;
