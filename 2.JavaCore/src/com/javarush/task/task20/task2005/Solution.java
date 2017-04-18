@@ -9,13 +9,6 @@ import java.util.List;
 Странные ошибки
 */
 
-//        Что помогло мне и может помочь другим:
-//        1) Если у записываемого объекта string1 null, а string2 не null, то у загруженного объекта должно быть точно так же. Проверьте и другие комбинации.
-//        3) countStrings не должен измениться после выполнения загрузки объектов (вот это реально телепатия, без форума в жизни бы не догадался).
-//        4) если записать в файл стринги с индексом 3 и 4 (например), то загрузиться должны стринги с этими же индексами, а не, например, 1 и 2
-//
-//        Когда все эти условия выполнились, валидатор засчитал.
-
 public class Solution {
     public static void main(String[] args) {
         //исправь outputStream/inputStream в соответствии с путем к твоему реальному файлу
@@ -54,9 +47,12 @@ public class Solution {
 
             Human human = (Human) o;
 
-            if (name == null ? !name.equals(human.name) : human.name != null) return false;
-            return assets != null ? assets.equals(human.assets) : human.assets == null;
+            //if (name == null ? !name.equals(human.name) : human.name != null) return false;
+            //return assets != null ? assets.equals(human.assets) : human.assets == null;
 
+            if (name == null || !name.equals(human.name)) return false;
+            if (assets == null || !assets.equals(human.assets)) return false;
+            return true;
         }
 
         @Override
@@ -80,24 +76,11 @@ public class Solution {
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
             PrintWriter printWriter = new PrintWriter(outputStream);
-            //printWriter.println(this.name);
-
-            String YesOrNot = name != null ? "yes" : "no"; // проверяем на существование имени
-            printWriter.println(YesOrNot); // результат записываем в файл
-
-/*            if (this.assets.size() > 0) {
+            printWriter.println(this.name);
+            if (this.assets.size() > 0) {
                 for (Asset current : this.assets)
                     printWriter.println(current.getName());
-            }*/
-
-            if ("yes".equals(YesOrNot)) {
-                printWriter.println(name);
-                for (Asset as : this.assets) {
-                    printWriter.println(as.getName());
-                }
             }
-
-
             printWriter.close();
         }
 
@@ -105,20 +88,10 @@ public class Solution {
             //implement this method - реализуйте этот метод
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-/*            this.name = reader.readLine();
+            this.name = reader.readLine();
             String assetName;
             while ((assetName = reader.readLine()) != null)
-                this.assets.add(new Asset(assetName));*/
-
-            String YesOrNot = reader.readLine();
-
-            if (YesOrNot.equals("yes"))
-            {
-                name = reader.readLine();
-                while (reader.ready())
-                    assets.add(new Asset(reader.readLine()));
-            }
-
+                this.assets.add(new Asset(assetName));
             reader.close();
         }
     }

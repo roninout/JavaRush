@@ -51,13 +51,11 @@ public class Solution {
         Matcher tagMatcher = tagPattern.matcher(htmlFile);
 
         while (tagMatcher.find()) {
-            if (("<" + tag).equals(tagMatcher.group())) {
+            if (("<" + tag).equals(tagMatcher.group()))
                 startArrayDeque.push(tagMatcher.start());
-            }
 
-            if (("</" + tag + ">").equals(tagMatcher.group())) {
+            if (("</" + tag + ">").equals(tagMatcher.group()))
                 posTreeMap.put(startArrayDeque.pop(), tagMatcher.end());
-            }
         }
 
         for (Map.Entry<Integer, Integer> tagString: posTreeMap.entrySet()) {
