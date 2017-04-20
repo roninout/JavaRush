@@ -17,11 +17,7 @@ public class Solution {
     }
 
     public static boolean isAllModifiersContainSpecificModifier(int allModifiers, int specificModifier) {
-        for (Integer :
-             ) {
-            
-        }
-        return false;
+        return Modifier.toString(allModifiers).contains(Modifier.toString(specificModifier));
     }
 
     private static Method getMainMethod() {
