@@ -30,26 +30,13 @@ public class Solution implements Cloneable{
     protected Map<String, User> users = new LinkedHashMap();
 
     @Override
-    public int hashCode() {
-        return users.hashCode() * 31;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Solution solution = (Solution) obj;
-        return users.equals(solution.users);
-    }
-
-    @Override
     protected Solution clone() throws CloneNotSupportedException {
         Map<String, User> clonedUsers = new LinkedHashMap();
 
         for (Map.Entry<String, User> map : users.entrySet())
             clonedUsers.put(map.getKey(), (User)map.getValue().clone());
 
-        Solution clonedSolution = new Solution();
+        Solution clonedSolution = (Solution) super.clone();
         clonedSolution.users = clonedUsers;
 
         return clonedSolution;
@@ -68,8 +55,26 @@ public class Solution implements Cloneable{
         }
 
         @Override
-        protected Object clone() throws CloneNotSupportedException {
+        protected User clone() throws CloneNotSupportedException {
             return new User(age, name);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = age;
+            result = 31 * result + (name != null ? name.hashCode() : 0);
+            return result;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (!(obj instanceof User)) return false;
+
+            User user = (User) obj;
+
+            if (age != user.age) return false;
+            return name != null ? name.equals(user.name) : user.name == null;
         }
     }
 }
