@@ -12,9 +12,10 @@ public class Solution {
     public static void main(String[] args){
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-             BufferedReader fileReader = new BufferedReader(new FileReader("1.txt")))
+             BufferedReader fileReader = new BufferedReader(new FileReader(reader.readLine())))
         {
             ArrayList<String> words = new ArrayList<>(); // коллекция всех слов
+            ArrayList<Integer> findedIds = new ArrayList<>(); // коллекция индексов найденных слов
 
             while (fileReader.ready()) // считываем файл
             {
@@ -22,12 +23,27 @@ public class Solution {
                 Collections.addAll(words, array); // добавляем их в ArrayList
             }
 
-            Iterator iterator = words.iterator();
+            for (int i = 0; i < words.size(); i++) // пробегаем по словам
+            {
+                if (findedIds.contains(i)) continue; // пропсукаем индекс найденного реверсивного слова (впереди текущего)
 
-            while (iterator.hasNext())
+                for (int j = i+1; j < words.size(); j++) // пробегаем по словам + 1
+                {
+                    StringBuilder str2 = new StringBuilder(words.get(j)).reverse();
 
+                    if (words.get(i).equals(str2.toString())){ // если равны, добавляем в класс
+                        Pair pair = new Pair();
+                        pair.first  = words.get(i);
+                        pair.second = words.get(j);
+                        result.add(pair);
+                        findedIds.add(j); // запоминаем индекс найденного реверсивного слова
+                        break;
+                    }
+                }
+            }
 
-
+            for (Pair list: result)
+                System.out.println(list.toString());
         }
         catch (IOException e) { e.printStackTrace(); }
     }
