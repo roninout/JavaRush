@@ -10,11 +10,18 @@ public class Solution {
     }
 
     public static Solution[] getTwoSolutions() {
-        Solution solution1 = new Solution();
-        Solution solution2 = new Solution();
 
+        Solution [] result = new Solution[2];
+        result[0] = new Solution();
+        result[1] = new Solution();
 
-        return null;
+        result[0].innerClasses[0] = result[0].new InnerClass();
+        result[0].innerClasses[1] = result[0].new InnerClass();
+
+        result[1].innerClasses[0] =  result[1].new InnerClass();
+        result[1].innerClasses[1] =  result[1].new InnerClass();
+
+        return result;
     }
 
     public static void main(String[] args) {
